@@ -12,11 +12,12 @@
 class Book
 {
 private:
-    std::string name = "";
+    std::string name;
     time_t publicationDate;
-    std::string genre = "";
-    int pageNumber = 0;
+    std::string genre;
+    int pageNumber;
     std::shared_ptr<authorBookData> authors;
+
 public:
     Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
     std::string getName() const;

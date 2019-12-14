@@ -11,21 +11,10 @@ void Author::setFavouriteGenre(const std::string &value)
     favouriteGenre = value;
 }
 
-Author::Author(std::string realName, std::string pseudonymName, std::string favouriteGenre)
+Author::Author(std::string realName, std::string favouriteGenre)
 {
     this->realName = realName;
-    this->pseudonymName = pseudonymName;
     this->favouriteGenre = favouriteGenre;
-}
-
-std::string Author::getPseudonymName() const
-{
-    return pseudonymName;
-}
-
-void Author::setPseudonymName(const std::string &value)
-{
-    pseudonymName = value;
 }
 
 std::string Author::getRealName() const
