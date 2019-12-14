@@ -48,11 +48,6 @@ void Book::setPageNumber(int value)
     pageNumber = value;
 }
 
-oneAuthorBook::oneAuthorBook(Author author, std::string name, time_t publicationDate, std::string genre, int pageNumber)
-    : Book(name, publicationDate, genre, pageNumber), author(author)
-{
-}
-
 Author oneAuthorBook::getAuthor() const
 {
     return author;
@@ -61,12 +56,6 @@ Author oneAuthorBook::getAuthor() const
 void oneAuthorBook::setAuthor(const Author &value)
 {
     author = value;
-}
-
-
-manyAuthorBook::manyAuthorBook(std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
-: Book(name, publicationDate, genre, pageNumber), authors(authors)
-{
 }
 
 std::vector<Author> manyAuthorBook::getAuthors() const
@@ -79,6 +68,16 @@ void manyAuthorBook::setAuthors(const std::vector<Author> &value)
     authors = value;
 }
 
+oneAuthorBook::oneAuthorBook(Author author, std::string name, time_t publicationDate, std::string genre, int pageNumber)
+    : Book(name, publicationDate, genre, pageNumber), author(author)
+{
+}
+
+manyAuthorBook::manyAuthorBook(std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
+    : Book(name, publicationDate, genre, pageNumber), authors(authors)
+{
+}
+
 manyAuthorBook_percentDone::manyAuthorBook_percentDone(std::unordered_map<Author, int> bookPercentDone, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
 : manyAuthorBook(authors, name, publicationDate, genre, pageNumber), bookPercentDone(bookPercentDone)
 {
@@ -86,5 +85,10 @@ manyAuthorBook_percentDone::manyAuthorBook_percentDone(std::unordered_map<Author
 
 manyAuthorBook_firstCoefficient::manyAuthorBook_firstCoefficient(int coefficient, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
     : manyAuthorBook(authors, name, publicationDate, genre, pageNumber), coefficient(coefficient)
+{
+}
+
+manyAuthorBook_withSections::manyAuthorBook_withSections(std::vector<Section> sections, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
+    : manyAuthorBook(authors, name, publicationDate, genre, pageNumber), sections(sections)
 {
 }

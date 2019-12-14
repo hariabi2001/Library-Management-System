@@ -18,14 +18,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     author.cpp \
+    authorbookdata.cpp \
     book.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    section.cpp
 
 HEADERS += \
     author.h \
+    authorbookdata.h \
     book.h \
-    mainwindow.h
+    mainwindow.h \
+    section.h
 
 FORMS += \
     mainwindow.ui

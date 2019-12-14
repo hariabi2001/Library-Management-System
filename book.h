@@ -5,6 +5,8 @@
 #include <vector>
 #include <ctime>
 #include <author.h>
+#include <authorbookdata.h>
+#include <section.h>
 
 class Book
 {
@@ -25,43 +27,12 @@ public:
     void setPageNumber(int value);
 };
 
-class oneAuthorBook : public Book
+class manyAuthorBook_withSections : public Book
 {
 private:
-    Author author;
+    std::vector<Section> sections;
 public:
-    oneAuthorBook(Author author, std::string name, time_t publicationDate, std::string genre, int pageNumber);
-    Author getAuthor() const;
-    void setAuthor(const Author &value);
+    manyAuthorBook_withSections(std::vector<Section> sections, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
 };
-
-class manyAuthorBook : public Book
-{
-private:
-    std::vector<Author> authors;
-public:
-    manyAuthorBook(std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
-    std::vector<Author> getAuthors() const;
-    void setAuthors(const std::vector<Author> &value);
-};
-
-class manyAuthorBook_percentDone : public manyAuthorBook
-{
-private:
-    std::unordered_map<Author, int> bookPercentDone;
-public:
-    manyAuthorBook_percentDone(std::unordered_map<Author, int> bookPercentDone, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
-};
-
-class manyAuthorBook_firstCoefficient : public manyAuthorBook
-{
-private:
-    int coefficient;
-public:
-    manyAuthorBook_firstCoefficient(int coefficient, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
-};
-
-
-
 
 #endif // BOOK_H
