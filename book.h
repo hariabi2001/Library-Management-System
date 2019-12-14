@@ -45,12 +45,23 @@ public:
     void setAuthors(const std::vector<Author> &value);
 };
 
-class manyAuthorBook_bookParts : public manyAuthorBook
+class manyAuthorBook_percentDone : public manyAuthorBook
 {
 private:
     std::unordered_map<Author, int> bookPercentDone;
 public:
-    manyAuthorBook_bookParts(std::unordered_map<Author, int> bookPercentDone, std::string name, time_t publicationDate, std::string genre, int pageNumber);
+    manyAuthorBook_percentDone(std::unordered_map<Author, int> bookPercentDone, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
 };
+
+class manyAuthorBook_firstCoefficient : public manyAuthorBook
+{
+private:
+    int coefficient;
+public:
+    manyAuthorBook_firstCoefficient(int coefficient, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
+};
+
+
+
 
 #endif // BOOK_H

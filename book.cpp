@@ -78,3 +78,13 @@ void manyAuthorBook::setAuthors(const std::vector<Author> &value)
 {
     authors = value;
 }
+
+manyAuthorBook_percentDone::manyAuthorBook_percentDone(std::unordered_map<Author, int> bookPercentDone, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
+: manyAuthorBook(authors, name, publicationDate, genre, pageNumber), bookPercentDone(bookPercentDone)
+{
+}
+
+manyAuthorBook_firstCoefficient::manyAuthorBook_firstCoefficient(int coefficient, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber)
+    : manyAuthorBook(authors, name, publicationDate, genre, pageNumber), coefficient(coefficient)
+{
+}
