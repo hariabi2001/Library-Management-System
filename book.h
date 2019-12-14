@@ -7,6 +7,7 @@
 #include <author.h>
 #include <authorbookdata.h>
 #include <section.h>
+#include <memory>
 
 class Book
 {
@@ -15,8 +16,9 @@ private:
     time_t publicationDate;
     std::string genre = "";
     int pageNumber = 0;
+    std::shared_ptr<authorBookData> authors;
 public:
-    Book(std::string name, time_t publicationDate, std::string genre, int pageNumber);
+    Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
     std::string getName() const;
     void setName(const std::string &value);
     time_t getPublicationDate() const;
@@ -32,7 +34,7 @@ class manyAuthorBook_withSections : public Book
 private:
     std::vector<Section> sections;
 public:
-    manyAuthorBook_withSections(std::vector<Section> sections, std::vector<Author> authors, std::string name, time_t publicationDate, std::string genre, int pageNumber);
+    manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
 };
 
 #endif // BOOK_H

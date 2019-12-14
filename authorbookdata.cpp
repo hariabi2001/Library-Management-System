@@ -1,10 +1,5 @@
 #include "authorbookdata.h"
 
-authorBookData::authorBookData()
-{
-
-}
-
 
 Author oneAuthor::getAuthor() const
 {
