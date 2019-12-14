@@ -44,3 +44,13 @@ Book::Book()
 {
 
 }
+
+Author oneAuthorBook::getAuthor() const
+{
+    return author;
+}
+
+void oneAuthorBook::setAuthor(const Author &value)
+{
+    author = value;
+}

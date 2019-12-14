@@ -2,6 +2,7 @@
 #define BOOK_H
 #include <string>
 #include <ctime>
+#include <author.h>
 
 class Book
 {
@@ -21,6 +22,15 @@ public:
     void setGenre(const std::string &value);
     int getPageNumber() const;
     void setPageNumber(int value);
+};
+
+class oneAuthorBook : public Book
+{
+private:
+    Author author;
+public:
+    Author getAuthor() const;
+    void setAuthor(const Author &value);
 };
 
 #endif // BOOK_H
