@@ -7,7 +7,8 @@ class algorithms
 {
 public:
     algorithms();
-    int findBookNumber(std::vector<Book*> books, Author* author);
+    int findBookNumber(std::vector<Book*> books, Author* author, time_t startDate, time_t endDate);
+    double findPageNumber(std::vector<Book*> books, Author* author, time_t startDate, time_t endDate);
 };
 
 #endif // ALGORITHMS_H

@@ -39,7 +39,6 @@ private:
     std::vector<Section> sections;
 public:
     manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
-    //TODO find page number for the sections
 };
 
 #endif // BOOK_H

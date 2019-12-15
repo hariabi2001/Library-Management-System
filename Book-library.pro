@@ -20,7 +20,9 @@ SOURCES += \
     algorithms.cpp \
     author.cpp \
     authorbookdata.cpp \
+    authorui.cpp \
     book.cpp \
+    bookui.cpp \
     main.cpp \
     mainwindow.cpp \
     section.cpp
@@ -29,11 +31,15 @@ HEADERS += \
     algorithms.h \
     author.h \
     authorbookdata.h \
+    authorui.h \
     book.h \
+    bookui.h \
     mainwindow.h \
     section.h
 
 FORMS += \
+    authorui.ui \
+    bookui.ui \
     mainwindow.ui
 
 # Default rules for deployment.
