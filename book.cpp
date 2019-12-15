@@ -1,13 +1,22 @@
 #include "book.h"
+#include <unordered_map>
+#include <authorbookdata.h>
 
 Book::Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors)
     : name(name), publicationDate(publicationDate), genre(genre), pageNumber(pageNumber), authors(authors)
 {
 }
 
-std::vector<author_page> Book::getPagesByAuthor()
+std::unordered_map<std::string, double> Book::getPagesByAuthor()
 {
-    authors->getPartByAuthor();
+    std::unordered_map<std::string, double> authorParts = authors->getPartByAuthor();
+    std::unordered_map<std::string, double> pagesByAuthor;
+    double pagesAuthor;
+    for (auto it = authorParts.begin(); it != authorParts.end(); it++){
+        pagesAuthor = it->second * pageNumber;
+        pagesByAuthor.insert({it->first, pagesAuthor});
+    }
+    return pagesByAuthor;
 }
 
 std::string Book::getName() const

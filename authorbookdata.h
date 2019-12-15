@@ -15,7 +15,7 @@ class authorBookData
 {
 public:
     virtual std::unordered_map<std::string, double> getPartByAuthor() = 0;
-    virtual ~authorBookData() = 0;
+    virtual ~authorBookData(){}
 };
 
 class oneAuthor : public authorBookData

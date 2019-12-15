@@ -47,8 +47,8 @@ void manyAuthor_firstCoefficient::setCoefficient(int value)
 }
 
 manyAuthors::manyAuthors(std::vector<author_pseudonym> authors)
-    :authors(authors)
 {
+    this->authors = authors;
 }
 
 std::unordered_map<std::string, double> manyAuthors::getPartByAuthor()
