@@ -9,6 +9,7 @@ public:
     algorithms();
     int findBookNumber(std::vector<Book*> books, Author* author, time_t startDate, time_t endDate);
     double findPageNumber(std::vector<Book*> books, Author* author, time_t startDate, time_t endDate);
+    time_t getTime(std::string time);
 };
 
 #endif // ALGORITHMS_H

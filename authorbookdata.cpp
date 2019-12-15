@@ -1,6 +1,11 @@
 #include "authorbookdata.h"
 #include <unordered_map>
 
+oneAuthor::oneAuthor(Author *author, std::string pseudonym)
+    :author(author), pseudonym(pseudonym)
+{
+}
+
 std::unordered_map<std::string, double> oneAuthor::getPartByAuthor()
 {
     std::unordered_map<std::string, double> result;

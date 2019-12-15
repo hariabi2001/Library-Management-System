@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <authorbookdata.h>
 
-Book::Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors)
+Book::Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors)
     : name(name), publicationDate(publicationDate), genre(genre), pageNumber(pageNumber), authors(authors)
 {
 }
@@ -63,7 +63,7 @@ void Book::setPageNumber(int value)
 {
     pageNumber = value;
 }
-manyAuthorBook_withSections::manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors)
+manyAuthorBook_withSections::manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors)
     : Book(name, publicationDate, genre, pageNumber, authors), sections(sections)
 {
 }

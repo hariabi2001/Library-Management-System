@@ -1,7 +1,10 @@
 #ifndef BOOKUI_H
 #define BOOKUI_H
 
+#include "QTreeWidgetItem"
 #include <QMainWindow>
+#include "author.h"
+#include "book.h"
 
 namespace Ui {
 class bookUI;
@@ -17,6 +20,11 @@ public:
 
 private:
     Ui::bookUI *ui;
+    std::vector<Book*> books;
+    std::vector<Author*> authors;
+
+    void addRootGenre(QString name);
+    void addChildBook(QTreeWidgetItem *parent, QString name, QString path);
 };
 
 #endif // BOOKUI_H

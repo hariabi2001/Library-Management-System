@@ -16,12 +16,13 @@ private:
     time_t publicationDate;
     std::string genre;
     int pageNumber;
-    std::shared_ptr<authorBookData> authors;
+    authorBookData *authors;
 
 public:
-    Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
+    Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData *authors);
     std::unordered_map<std::string, double> getPagesByAuthor();
     bool isAuthor(Author* author);
+
 
     std::string getName() const;
     void setName(const std::string &value);
@@ -38,7 +39,7 @@ class manyAuthorBook_withSections : public Book
 private:
     std::vector<Section> sections;
 public:
-    manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
+    manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors);
 };
 
 #endif // BOOK_H
