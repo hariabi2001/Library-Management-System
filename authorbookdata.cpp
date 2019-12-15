@@ -11,6 +11,7 @@ std::unordered_map<std::string, double> oneAuthor::getPartByAuthor()
 bool oneAuthor::isAuthor(Author *author)
 {
     if (this->author == author) return true;
+    return false;
 }
 
 std::string oneAuthor::getPseudonym() const
