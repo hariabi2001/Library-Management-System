@@ -17,6 +17,15 @@ Author::Author(std::string realName, std::string favouriteGenre)
     this->favouriteGenre = favouriteGenre;
 }
 
+int Author::findBookNumber(std::vector<Book*> books)
+{
+    int bookNumber = 0;
+    for (Book* book : books){
+        if (book->isAuthor(this)) bookNumber++;
+    }
+    return bookNumber;
+}
+
 std::string Author::getRealName() const
 {
     return realName;

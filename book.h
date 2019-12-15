@@ -21,6 +21,7 @@ private:
 public:
     Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
     std::unordered_map<std::string, double> getPagesByAuthor();
+    bool isAuthor(Author* author);
 
     std::string getName() const;
     void setName(const std::string &value);
@@ -38,6 +39,7 @@ private:
     std::vector<Section> sections;
 public:
     manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
+    //TODO find page number for the sections
 };
 
 #endif // BOOK_H

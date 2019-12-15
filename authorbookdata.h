@@ -15,6 +15,7 @@ class authorBookData
 {
 public:
     virtual std::unordered_map<std::string, double> getPartByAuthor() = 0;
+    virtual bool isAuthor(Author* author) = 0;
     virtual ~authorBookData(){}
 };
 
@@ -27,6 +28,7 @@ private:
 public:
     oneAuthor(Author *author, std::string pseudonym);
     std::unordered_map<std::string, double> getPartByAuthor() override;
+    bool isAuthor(Author* author) override;
     Author getAuthor() const;
     void setAuthor(const Author &value);
     std::string getPseudonym() const;
@@ -40,6 +42,7 @@ protected:
     std::vector<author_pseudonym> authors;
 public:
     manyAuthors(std::vector<author_pseudonym> authors);
+    bool isAuthor(Author* author) override;
     std::unordered_map<std::string, double> getPartByAuthor() override;
 };
 
@@ -50,6 +53,7 @@ private:
 public:
     manyAuthor_firstCoefficient(int coefficient, std::vector<author_pseudonym> authors);
     std::unordered_map<std::string, double> getPartByAuthor() override;
+    //isAuthor from manyAuthors class should be used
     int getCoefficient() const;
     void setCoefficient(int value);
 };

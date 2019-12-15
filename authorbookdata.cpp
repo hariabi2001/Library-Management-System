@@ -8,6 +8,11 @@ std::unordered_map<std::string, double> oneAuthor::getPartByAuthor()
     return result;
 }
 
+bool oneAuthor::isAuthor(Author *author)
+{
+    if (this->author == author) return true;
+}
+
 std::string oneAuthor::getPseudonym() const
 {
     return pseudonym;
@@ -49,6 +54,13 @@ void manyAuthor_firstCoefficient::setCoefficient(int value)
 manyAuthors::manyAuthors(std::vector<author_pseudonym> authors)
 {
     this->authors = authors;
+}
+
+bool manyAuthors::isAuthor(Author *author)
+{
+    for(author_pseudonym it : authors)
+        if (it.author == author) return true;
+    return false;
 }
 
 std::unordered_map<std::string, double> manyAuthors::getPartByAuthor()

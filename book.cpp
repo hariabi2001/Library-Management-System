@@ -19,6 +19,11 @@ std::unordered_map<std::string, double> Book::getPagesByAuthor()
     return pagesByAuthor;
 }
 
+bool Book::isAuthor(Author* author)
+{
+    return authors->isAuthor(author);
+}
+
 std::string Book::getName() const
 {
     return name;
