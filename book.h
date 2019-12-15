@@ -9,6 +9,11 @@
 #include <section.h>
 #include <memory>
 
+struct author_page{
+    std::string name;
+    int pages;
+};
+
 class Book
 {
 private:
@@ -20,6 +25,8 @@ private:
 
 public:
     Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors);
+    std::vector<author_page> getPagesByAuthor();
+
     std::string getName() const;
     void setName(const std::string &value);
     time_t getPublicationDate() const;

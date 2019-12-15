@@ -4,22 +4,29 @@
 #include <unordered_map>
 #include <vector>
 
+struct author_pseudonym{
+    Author *author;
+    std::string pseudonym;
+    author_pseudonym(Author *author, std::string pseudonym)
+        :author(author), pseudonym(pseudonym){}
+};
 
 class authorBookData
 {
 public:
-    virtual std::unordered_map<Author, int> getPartByAuthor() = 0;
+    virtual std::unordered_map<std::string, double> getPartByAuthor() = 0;
     virtual ~authorBookData() = 0;
 };
 
 class oneAuthor : public authorBookData
 {
 private:
-    Author author;
+    //can be one author, but many pseudonyms for different books, so better to save a pointer to the author
+    Author *author;
     std::string pseudonym;
 public:
-    oneAuthor(Author author);
-    std::unordered_map<Author, int> getPartByAuthor() override;
+    oneAuthor(Author *author, std::string pseudonym);
+    std::unordered_map<std::string, double> getPartByAuthor() override;
     Author getAuthor() const;
     void setAuthor(const Author &value);
     std::string getPseudonym() const;
@@ -30,21 +37,19 @@ class manyAuthors : public authorBookData
 {
 protected:
     //authors and their pseudonyms
-    std::unordered_map<Author, std::string> authors;
+    std::vector<author_pseudonym> authors;
 public:
-    manyAuthors(std::unordered_map<Author, std::string> authors);
-    std::unordered_map<Author, int> getPartByAuthor() override;
-    std::vector<Author> getAuthors() const;
-    void setAuthors(const std::vector<Author> &value);
+    manyAuthors(std::vector<author_pseudonym> authors);
+    std::unordered_map<std::string, double> getPartByAuthor() override;
 };
 
-class manyAuthor_firstCoefficient : manyAuthors
+class manyAuthor_firstCoefficient : public manyAuthors
 {
 private:
     int coefficient;
 public:
-    manyAuthor_firstCoefficient(int coefficient, std::unordered_map<Author, std::string> authors);
-    std::unordered_map<Author, int> getPartByAuthor() override;
+    manyAuthor_firstCoefficient(int coefficient, std::vector<author_pseudonym> authors);
+    std::unordered_map<std::string, double> getPartByAuthor() override;
     int getCoefficient() const;
     void setCoefficient(int value);
 };

@@ -1,12 +1,13 @@
 #include "book.h"
 
 Book::Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, std::shared_ptr<authorBookData> authors)
+    : name(name), publicationDate(publicationDate), genre(genre), pageNumber(pageNumber), authors(authors)
 {
-    this->name = name;
-    this->publicationDate = publicationDate;
-    this->genre = genre;
-    this->pageNumber = pageNumber;
-    this->authors = authors;
+}
+
+std::vector<author_page> Book::getPagesByAuthor()
+{
+    authors->getPartByAuthor();
 }
 
 std::string Book::getName() const
