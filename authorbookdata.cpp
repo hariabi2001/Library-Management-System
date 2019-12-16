@@ -13,6 +13,13 @@ std::unordered_map<std::string, double> oneAuthor::getPartByAuthor()
     return result;
 }
 
+std::vector<std::string> oneAuthor::getAuthors()
+{
+    std::vector<std::string> result;
+    result.push_back(author->getRealName());
+    return result;
+}
+
 bool oneAuthor::isAuthor(Author *author)
 {
     if (this->author == author) return true;
@@ -47,6 +54,15 @@ std::unordered_map<std::string, double> manyAuthor_firstCoefficient::getPartByAu
     return result;
 }
 
+std::vector<std::string> manyAuthor_firstCoefficient::getAuthors()
+{
+    std::vector<std::string> result;
+    for (author_pseudonym author : authors){
+        result.push_back(author.author->getRealName());
+    }
+    return result;
+}
+
 int manyAuthor_firstCoefficient::getCoefficient() const
 {
     return coefficient;
@@ -77,6 +93,15 @@ std::unordered_map<std::string, double> manyAuthors::getPartByAuthor()
     partMadeByAuthor = 1 / numberOfAuthors;
     for (author_pseudonym author : authors){
         result.insert({ author.author->getRealName(), partMadeByAuthor });
+    }
+    return result;
+}
+
+std::vector<std::string> manyAuthors::getAuthors()
+{
+    std::vector<std::string> result;
+    for (author_pseudonym author : authors){
+        result.push_back(author.author->getRealName());
     }
     return result;
 }

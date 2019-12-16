@@ -22,6 +22,7 @@ SOURCES += \
     authorbookdata.cpp \
     authorui.cpp \
     book.cpp \
+    bookinformation.cpp \
     bookui.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -33,12 +34,14 @@ HEADERS += \
     authorbookdata.h \
     authorui.h \
     book.h \
+    bookinformation.h \
     bookui.h \
     mainwindow.h \
     section.h
 
 FORMS += \
     authorui.ui \
+    bookinformation.ui \
     bookui.ui \
     mainwindow.ui
 

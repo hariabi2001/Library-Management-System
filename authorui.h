@@ -26,10 +26,12 @@ private slots:
 private:
     algorithms algorithm;
     Ui::authorUI *ui;
-    void addToList(Author *author);
-    void addStringToList(std::string value);
     std::vector<Book*> books;
     std::vector<Author*> authors;
+
+    void addToList(Author *author);
+    void addStringToList(std::string value);
+    void addData();
 };
 
 #endif // AUTHORUI_H

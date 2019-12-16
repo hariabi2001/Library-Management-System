@@ -22,7 +22,7 @@ public:
     Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData *authors);
     std::unordered_map<std::string, double> getPagesByAuthor();
     bool isAuthor(Author* author);
-
+    std::vector<std::string> getAuthors();
 
     std::string getName() const;
     void setName(const std::string &value);

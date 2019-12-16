@@ -48,7 +48,7 @@ time_t algorithms::getTime(std::string time)
     const char *zStart = time.c_str();
 
     sscanf(zStart, "%d/%d/%d %d:%d:%d", &yy, &month, &dd, &hh, &mm, &ss);
-    whenStart.tm_year = yy - 1900;
+    whenStart.tm_year = yy;
     whenStart.tm_mon = month - 1;
     whenStart.tm_mday = dd;
     whenStart.tm_hour = hh;

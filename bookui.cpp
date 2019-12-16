@@ -1,12 +1,46 @@
 #include "bookui.h"
 #include "ui_bookui.h"
 #include "algorithms.h"
+#include "bookinformation.h"
 
 bookUI::bookUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::bookUI)
 {
     ui->setupUi(this);
+    ui->booksTree->setHeaderHidden(true);
+    addData();
+}
+
+bookUI::~bookUI()
+{
+    delete ui;
+}
+
+void bookUI::addRootGenre(QString name)
+{
+    QTreeWidgetItem *item = new QTreeWidgetItem(ui->booksTree);
+    item->setText(0, name);
+    ui->booksTree->addTopLevelItem(item);
+}
+
+void bookUI::addChildBook(Book* book)
+{
+    //trying to find the genre of the book from the list
+    for( int i = 0; i < ui->booksTree->topLevelItemCount(); ++i )
+    {
+       QTreeWidgetItem *item = ui->booksTree->topLevelItem(i);
+       if (item->text(0) == QString::fromStdString(book->getGenre())){
+           QTreeWidgetItem *newBook = new QTreeWidgetItem();
+           newBook->setText(0, QString::fromStdString(book->getName()));
+           item->addChild(newBook);
+           break;
+       }
+    }
+}
+
+void bookUI::addData()
+{
     Author *author1 = new Author("Cris Smith", "Classic");
     Author *author2 = new Author("Albert Tuna", "History");
     Author *author3 = new Author("Nickolas Tame", "History");
@@ -34,25 +68,22 @@ bookUI::bookUI(QWidget *parent) :
     addRootGenre("Thriller");
     addRootGenre("Science fiction");
     addRootGenre("Classic");
-
+    for (Book *book : books) addChildBook(book);
 }
 
-bookUI::~bookUI()
-{
-    delete ui;
-}
 
-void bookUI::addRootGenre(QString name)
-{
-    QTreeWidgetItem *item = new QTreeWidgetItem(ui->treeWidget);
-    item->setText(0, name);
-    ui->treeWidget->addTopLevelItem(item);
-}
 
-void bookUI::addChildBook(QTreeWidgetItem *parent, QString name, QString path)
+void bookUI::on_booksTree_itemClicked(QTreeWidgetItem *item, int column)
 {
-    QTreeWidgetItem *item = new QTreeWidgetItem();
-    item->setText(0, name);
-    item->setData(0, Qt::UserRole, path);
-    parent->addChild(item);
+    if (item->parent()){
+        Book* searchedBook = books[0];
+        for (Book* book : books){
+            if (QString::fromStdString(book->getName()) == item->text(0)){
+                searchedBook = book;
+                break;
+            }
+        }
+        bookinformation = new BookInformation(searchedBook);
+        bookinformation->show();
+    }
 }

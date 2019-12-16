@@ -26,3 +26,4 @@ void Author::setRealName(const std::string &value)
 {
     realName = value;
 }
+

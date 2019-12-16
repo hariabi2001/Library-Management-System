@@ -24,6 +24,12 @@ bool Book::isAuthor(Author* author)
     return authors->isAuthor(author);
 }
 
+std::vector<std::string> Book::getAuthors()
+{
+    std::vector<std::string> data = authors->getAuthors();
+    return data;
+}
+
 std::string Book::getName() const
 {
     return name;
