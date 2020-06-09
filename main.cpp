@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QtSql>
+#include <QDebug>
+#include <QMessageBox>
+
 
 int main(int argc, char *argv[])
 {
