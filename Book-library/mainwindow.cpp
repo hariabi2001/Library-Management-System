@@ -17,8 +17,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Authors_clicked()
 {
-    auto authorui = std::make_unique<authorUI>(this);
-    authorui->show();
+    auto authorUIPtr = std::make_unique<authorUI>(this);
+    authorUIPtr->show();
 }
 
 void MainWindow::on_Books_clicked()
