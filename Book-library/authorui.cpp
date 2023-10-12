@@ -23,7 +23,7 @@ authorUI::~authorUI()
 
 void authorUI::addToList(Author *author)
 {
-    std::unique_ptr<QListWidgetItem> item = std::make_unique<QListWidgetItem>();
+    auto item = std::make_unique<QListWidgetItem>();
     item->setText(QString::fromStdString(author->getRealName()));
     ui->authorsTable->addItem(item);
 }
