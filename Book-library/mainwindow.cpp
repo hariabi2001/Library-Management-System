@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Authors_clicked()
 {
-    authorui = new authorUI(this);
+    auto authorui = std::make_unique<authorUI>(this);
     authorui->show();
 }
 
