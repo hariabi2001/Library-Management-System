@@ -75,9 +75,8 @@ void manyAuthor_firstCoefficient::setCoefficient(int value)
     coefficient = value;
 }
 
-manyAuthors::manyAuthors(std::vector<author_pseudonym> authors)
-{
-    this->authors = authors;
+manyAuthors::manyAuthors(std::vector<author_pseudonym> authors) : authors(authors) {
+    
 }
 
 bool manyAuthors::isAuthor(Author* author) 
