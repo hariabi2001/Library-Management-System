@@ -23,6 +23,6 @@ void MainWindow::on_Authors_clicked()
 
 void MainWindow::on_Books_clicked()
 {
-    auto bookui = std::make_unique<bookUI>(this);
-    bookui->show();
+    auto bookUIPtr = std::make_unique<bookUI>(this);
+    bookUIPtr->show();
 }
