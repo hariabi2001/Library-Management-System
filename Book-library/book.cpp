@@ -55,10 +55,11 @@ std::string Book::getGenre() const
     return genre;
 }
 
-void Book::setGenre(const std::string &value)
+void Book::setGenre(std::string_view value) 
 {
-    genre = value;
+    genre.assign(value.data(), value.size());
 }
+
 
 int Book::getPageNumber() const
 {
