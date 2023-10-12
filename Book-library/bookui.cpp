@@ -55,17 +55,17 @@ void bookUI::addData()
     authors.push_back(author4);
     authors.push_back(author5);
 
-    std::shared_ptr<authorBookData> data1 = std::make_shared<oneAuthor>(author4, "Kelly");
+    auto data1 = std::make_shared<oneAuthor>(author4, "Kelly");
     std::vector<author_pseudonym> many1;
     many1.push_back(author_pseudonym(author1, "Derek"));
     many1.push_back(author_pseudonym(author2, "Felly"));
     many1.push_back(author_pseudonym(author3, "Dams"));
     many1.push_back(author_pseudonym(author5, "Parkinson"));
-    std::shared_ptr<authorBookData> data2 = std::make_shared<manyAuthors>(many1);
+    auto data2 = std::make_shared<manyAuthors>(many1);
 
     algorithms algorithm;
-    std::shared_ptr<Book> first = std::make_shared<Book>("Garry", algorithm.getTime("2000/02/01 00:00:00"), "Classic", 123, data2);
-    std::shared_ptr<Book> second = std::make_shared<Book>("July moon", algorithm.getTime("2005/02/07 00:00:00"), "History", 123, data1);
+    auto first = std::make_shared<Book>("Garry", algorithm.getTime("2000/02/01 00:00:00"), "Classic", 123, data2);
+    auto second = std::make_shared<Book>("July moon", algorithm.getTime("2005/02/07 00:00:00"), "History", 123, data1);
     books.push_back(first);
     books.push_back(second);
 
