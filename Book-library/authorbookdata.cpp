@@ -90,9 +90,9 @@ std::unordered_map<std::string, double> manyAuthors::getPartByAuthor()
     std::unordered_map<std::string, double> result;
     double partMadeByAuthor;
     int numberOfAuthors = authors.size();
-    partMadeByAuthor = 1 / numberOfAuthors;
-    for (author_pseudonym author : authors){
-        result.insert({ author.author->getRealName(), partMadeByAuthor });
+    partMadeByAuthor = 1.0 / numberOfAuthors; // Make sure to use a floating-point division here.
+    for (author_pseudonym author : authors) {
+        result.try_emplace(author.author->getRealName(), partMadeByAuthor);
     }
     return result;
 }
