@@ -44,11 +44,12 @@ void bookUI::addChildBook(Book* book)
 
 void bookUI::addData()
 {
-    Author *author1 = new Author("Cris Smith", "Classic");
-    Author *author2 = new Author("Albert Tuna", "History");
-    Author *author3 = new Author("Nickolas Tame", "History");
-    Author *author4 = new Author("Khristina Palson", "Thriller");
-    Author *author5 = new Author("John Kenner", "Science Fiction");
+    auto author1 = std::make_shared<Author>("Cris Smith", "Classic");
+    auto author2 = std::make_shared<Author>("Albert Tuna", "History");
+    auto author3 = std::make_shared<Author>("Nickolas Tame", "History");
+    auto author4 = std::make_shared<Author>("Khristina Palson", "Thriller");
+    auto author5 = std::make_shared<Author>("John Kenner", "Science Fiction");
+
     authors.push_back(author1);
     authors.push_back(author2);
     authors.push_back(author3);
