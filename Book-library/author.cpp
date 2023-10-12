@@ -22,7 +22,7 @@ std::string Author::getRealName() const
     return realName;
 }
 
-void Author::setRealName(const std::string &value)
+void Author::setRealName(std::string_view value)
 {
     realName = value;
 }
