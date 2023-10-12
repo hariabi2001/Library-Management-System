@@ -72,8 +72,7 @@ void bookUI::addData()
 }
 
 
-
-void bookUI::on_booksTree_itemClicked(QTreeWidgetItem *item, int column)
+void bookUI::on_booksTree_itemClicked(QTreeWidgetItem *item, [[maybe_unused]] int column)
 {
     if (item->parent()){
         Book* searchedBook = books[0];
