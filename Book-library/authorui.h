@@ -23,7 +23,7 @@ private slots:
     void on_bookSort_clicked();
 
 private:
-    algorithms algorithm;
+    [[no_unique_address]] algorithms algorithm;
     [[no_unique_address]] Ui::authorUI *ui;
     std::vector<Book*> books;
     std::vector<Author*> authors;
