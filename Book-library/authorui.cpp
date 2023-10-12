@@ -83,7 +83,7 @@ void authorUI::on_pageSort_clicked()
 
     for (int i = 0; i < authors.size(); i++) {
         num = algorithm.findPageNumber(books, authors[i], ui->startTime->dateTime().toTime_t(), ui->endTime->dateTime().toTime_t());
-        author_numberOfBooks.insert({ authors[i]->getRealName(), num });
+        author_numberOfBooks.try_emplace(authors[i]->getRealName(), num);
     }
 
     std::set<std::pair<const std::string, int>, Cmp> s;
