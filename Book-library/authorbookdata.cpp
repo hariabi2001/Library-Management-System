@@ -87,14 +87,15 @@ bool manyAuthors::isAuthor(Author *author)
     return false;
 }
 
-std::unordered_map<std::string, double> manyAuthors::getPartByAuthor()
+std::unordered_map<std::string, double, CustomHash, std::equal_to<>> manyAuthor_firstCoefficient::getPartByAuthor() 
 {
-    std::unordered_map<std::string, double> result;
-    double partMadeByAuthor;
-    int numberOfAuthors = authors.size();
-    partMadeByAuthor = 1.0 / numberOfAuthors; // Make sure to use a floating-point division here.
-    for (author_pseudonym author : authors) {
-        result.try_emplace(author.author->getRealName(), partMadeByAuthor);
+    std::unordered_map<std::string, double, CustomHash, std::equal_to<>> result;
+    int numberOfParts = authors.size() + coefficient - 1;
+    double partMadeByAuthors = 1.0 / numberOfParts; // Ensure division is done with double
+    double partMadeByFirstAuthor = coefficient * partMadeByAuthors;
+    result.insert({ authors[0].author->getRealName(), partMadeByFirstAuthor });
+    for (size_t i = 1; i < authors.size(); i++) {
+        result.insert({ authors[i].author->getRealName(), partMadeByAuthors });
     }
     return result;
 }
