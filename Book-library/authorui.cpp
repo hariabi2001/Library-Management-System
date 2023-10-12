@@ -30,7 +30,7 @@ void authorUI::addToList(Author *author)
 
 void authorUI::addStringToList(std::string value)
 {
-    QListWidgetItem *item = new QListWidgetItem();
+    auto item = std::make_unique<QListWidgetItem>();
     item->setText(QString::fromStdString(value));
     ui->authorsTable->addItem(item);
 }
