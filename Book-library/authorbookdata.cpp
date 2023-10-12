@@ -80,11 +80,11 @@ manyAuthors::manyAuthors(std::vector<author_pseudonym> authors)
     this->authors = authors;
 }
 
-bool manyAuthors::isAuthor(Author *author)
+bool manyAuthors::isAuthor(Author* author) 
 {
-    for(author_pseudonym it : authors)
-        if (it.author == author) return true;
-    return false;
+    return std::ranges::any_of(authors, [author](const author_pseudonym& it) {
+        return it.author == author;
+    });
 }
 
 std::unordered_map<std::string, double, CustomStringHash, std::equal_to<>> manyAuthor_firstCoefficient::getPartByAuthor() 
