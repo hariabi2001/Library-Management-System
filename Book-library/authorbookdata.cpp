@@ -20,9 +20,11 @@ std::vector<std::string> oneAuthor::getAuthors()
     return result;
 }
 
-bool oneAuthor::isAuthor(Author *author)
+bool oneAuthor::isAuthor(Author* otherAuthor) 
 {
-    if (this->author == author) return true;
+    if (this->author == otherAuthor) {
+        return true;
+    }
     return false;
 }
 
