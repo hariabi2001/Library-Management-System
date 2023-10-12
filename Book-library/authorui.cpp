@@ -102,12 +102,12 @@ void authorUI::on_bookSort_clicked()
     {
         bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b) const
         {
-            if(a.second == b.second) return a.first < b.first;
+            if (a.second == b.second) return a.first < b.first;
             return a.second < b.second;
         }
     };
 
-    std::map<std::string, int> author_numberOfBooks;
+    std::map<std::string, int, std::less<>> author_numberOfBooks; // Use std::less<> for transparent comparator
     int num;
 
     for (size_t i = 0; i < authors.size(); i++) {
