@@ -40,7 +40,6 @@ double algorithms::findPageNumber(std::vector<Book*> books, Author* author, time
         }
         
     }
-
     return pageNumber;
 }
 
