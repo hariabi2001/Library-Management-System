@@ -71,27 +71,34 @@ void authorUI::on_pageSort_clicked()
 {
     struct Cmp
     {
-        bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
-           {
+        bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b) const
+        {
             if(a.second == b.second) return a.first < b.first;
             return a.second < b.second;
-           }
+        }
     };
+    
     std::map<std::string, int> author_numberOfBooks;
     int num;
-    for (int i = 0; i < authors.size(); i++){
+
+    for (int i = 0; i < authors.size(); i++) {
         num = algorithm.findPageNumber(books, authors[i], ui->startTime->dateTime().toTime_t(), ui->endTime->dateTime().toTime_t());
         author_numberOfBooks.insert({ authors[i]->getRealName(), num });
     }
+
     std::set<std::pair<const std::string, int>, Cmp> s;
+
     for (const auto& pair : author_numberOfBooks) {
         s.insert(pair);
     }
+
     ui->authorsTable->clear();
-    for (std::pair<std::string, int> element : s){
+
+    for (const std::pair<std::string, int>& element : s) {
         addStringToList(element.first);
     }
 }
+
 
 void authorUI::on_bookSort_clicked()
 {
