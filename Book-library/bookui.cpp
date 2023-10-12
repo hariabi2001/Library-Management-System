@@ -49,30 +49,34 @@ void bookUI::addData()
     auto author3 = std::make_shared<Author>("Nickolas Tame", "History");
     auto author4 = std::make_shared<Author>("Khristina Palson", "Thriller");
     auto author5 = std::make_shared<Author>("John Kenner", "Science Fiction");
-
     authors.push_back(author1);
     authors.push_back(author2);
     authors.push_back(author3);
     authors.push_back(author4);
     authors.push_back(author5);
-    authorBookData *data1 = new oneAuthor(author4, "Kelly");
+
+    std::shared_ptr<authorBookData> data1 = std::make_shared<oneAuthor>(author4, "Kelly");
     std::vector<author_pseudonym> many1;
     many1.push_back(author_pseudonym(author1, "Derek"));
     many1.push_back(author_pseudonym(author2, "Felly"));
     many1.push_back(author_pseudonym(author3, "Dams"));
     many1.push_back(author_pseudonym(author5, "Parkinson"));
-    authorBookData *data2 = new manyAuthors(many1);
+    std::shared_ptr<authorBookData> data2 = std::make_shared<manyAuthors>(many1);
+
     algorithms algorithm;
-    Book *first = new Book("Garry", algorithm.getTime("2000/02/01 00:00:00"), "Classic", 123, data2);
-    Book *second = new Book("July moon", algorithm.getTime("2005/02/07 00:00:00"), "History", 123, data1);
+    std::shared_ptr<Book> first = std::make_shared<Book>("Garry", algorithm.getTime("2000/02/01 00:00:00"), "Classic", 123, data2);
+    std::shared_ptr<Book> second = std::make_shared<Book>("July moon", algorithm.getTime("2005/02/07 00:00:00"), "History", 123, data1);
     books.push_back(first);
     books.push_back(second);
+
     addRootGenre("Classic");
     addRootGenre("History");
     addRootGenre("Thriller");
     addRootGenre("Science fiction");
     addRootGenre("Classic");
-    for (Book *book : books) addChildBook(book);
+
+    for (const auto& book : books)
+        addChildBook(book);
 }
 
 
