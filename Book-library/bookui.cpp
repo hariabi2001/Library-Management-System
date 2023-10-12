@@ -14,7 +14,7 @@ bookUI::bookUI(QWidget *parent) :
 
 bookUI::~bookUI()
 {
-    delete ui;
+    
 }
 
 void bookUI::addRootGenre(QString name)
