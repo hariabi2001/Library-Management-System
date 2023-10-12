@@ -37,17 +37,19 @@ double algorithms::findPageNumber(std::vector<Book *> books, Author *author, tim
     return pageNumber;
 }
 
-time_t algorithms::getTime(const std::string& timeString) {
+std::time_t algorithms::getTime(const std::string& timeString) {
     std::tm whenStart = {};
     std::istringstream timeStream(timeString);
     timeStream >> std::get_time(&whenStart, "%Y/%m/%d %H:%M:%S");
-
     if (timeStream.fail()) {
         // Handle invalid input
         return -1; // Or any other appropriate error handling
     }
-
+    
+    // Convert std::tm to std::chrono::system_clock::time_point
     std::chrono::system_clock::time_point tp = std::chrono::system_clock::from_time_t(std::mktime(&whenStart));
+    
+    // Convert std::chrono::system_clock::time_point to std::time_t
     return std::chrono::system_clock::to_time_t(tp);
 }
 
