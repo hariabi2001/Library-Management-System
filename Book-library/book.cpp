@@ -7,7 +7,7 @@ Book::Book(const std::string& name, time_t publicationDate, const std::string& g
 {
 }
 
-std::unordered_map<std::string, double> Book::getPagesByAuthor()
+std::unordered_map<std::string, double, CustomHash, CustomEqual> Book::getPagesByAuthor() 
 {
     std::unordered_map<std::string, double> authorParts = authors->getPartByAuthor();
     std::unordered_map<std::string, double> pagesByAuthor;
