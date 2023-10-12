@@ -17,7 +17,6 @@ class bookUI : public QMainWindow
 
 public:
     explicit bookUI(QWidget *parent = nullptr);
-    ~bookUI();
 
 private slots:
     void on_booksTree_itemClicked(QTreeWidgetItem *item, int column);
