@@ -6,7 +6,7 @@
 
 struct author_pseudonym{
     Author *author;
-    std::string pseudonym;
+    const std::string& pseudonym;
     author_pseudonym(Author *author, std::string pseudonym)
         :author(author), pseudonym(pseudonym){}
 };
@@ -14,7 +14,7 @@ struct author_pseudonym{
 class authorBookData
 {
 public:
-    virtual std::unordered_map<std::string, double> getPartByAuthor() = 0;
+    virtual std::unordered_map<std::string, double, CustomHash, CustomEqual> getPartByAuthor() = 0;
     virtual bool isAuthor(Author* author) = 0;
     virtual std::vector<std::string> getAuthors() = 0;
     virtual ~authorBookData(){}
