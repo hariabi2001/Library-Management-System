@@ -11,7 +11,7 @@ void Author::setFavouriteGenre(std::string_view value)
     favouriteGenre = value;
 }
 
-Author::Author(std::string realName, std::string favouriteGenre)
+Author::Author(const std::string& realName, const std::string& favouriteGenre)
 {
     this->realName = realName;
     this->favouriteGenre = favouriteGenre;
