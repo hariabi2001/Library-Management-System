@@ -52,10 +52,22 @@ std::time_t algorithms::getTime(const std::string& timeString) {
         return -1; // Or any other appropriate error handling
     }
 
-    // Convert std::tm to std::chrono::system_clock::time_point
-    std::chrono::system_clock::time_point tp = std::chrono::system_clock::from_time_t(std::mktime(&whenStart));
+    // Convert std::tm to std::chrono::system_clock::time_point directly
+    std::chrono::system_clock::time_point tp = std::chrono::system_clock::from_time_t(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()));
+    tp += std::chrono::hours(whenStart.tm_hour);
+    tp += std::chrono::minutes(whenStart.tm_min);
+    tp += std::chrono::seconds(whenStart.tm_sec);
+    tp += std::chrono::hours(whenStart.tm_mday - 1); // Subtract 1 to adjust for day
+    tp += std::chrono::hours(whenStart.tm_mon * 30); // Very rough approximation for months
+    tp += std::chrono::hours((whenStart.tm_year - 70) * 365 * 24); // Adjust for years since 1970
+
+    // You might want to add more precise month and year adjustments
+    // based on your specific requirements.
 
     // Convert std::chrono::system_clock::time_point to std::time_t
-    return std::chrono::system_clock::to_time_t(tp);
+    std::time_t time = std::chrono::system_clock::to_time_t(tp);
+
+    return time;
 }
+
 
