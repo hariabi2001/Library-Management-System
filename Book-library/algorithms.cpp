@@ -20,20 +20,27 @@ int algorithms::findBookNumber(const std::vector<Book*>& books, Author* author, 
     return bookNumber;
 }
 
-double algorithms::findPageNumber(std::vector<Book *> books, Author *author, time_t startDate, time_t endDate)
+double algorithms::findPageNumber(std::vector<Book*> books, Author* author, time_t startDate, time_t endDate)
 {
     double pageNumber = 0;
     double secondsBetween1, secondsBetween2;
-    for (Book* book : books){
+
+    for (Book* book : books) {
         secondsBetween1 = difftime(endDate, book->getPublicationDate());
         secondsBetween2 = difftime(book->getPublicationDate(), startDate);
-        //if (secondsBetween1>0 && secondsBetween2 > 0){
-           std::unordered_map<std::string, double> result = book->getPagesByAuthor();
-           if (result.find(author->getRealName()) != result.end()) {
-               pageNumber = pageNumber + result[author->getRealName()];
-           }
-        //}
+
+        // Check if the book falls within the specified date range
+        // if (secondsBetween1 > 0 && secondsBetween2 > 0) {
+        std::unordered_map<std::string, double> result = book->getPagesByAuthor();
+
+        // Check if the author's name exists in the book's author list
+        auto authorPageCount = result.find(author->getRealName());
+        if (authorPageCount != result.end()) {
+            pageNumber += authorPageCount->second;
+        }
+        // }
     }
+
     return pageNumber;
 }
 
