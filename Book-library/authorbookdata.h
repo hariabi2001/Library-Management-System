@@ -39,7 +39,7 @@ public:
 
 class manyAuthors : public authorBookData
 {
-protected:
+private:
     //authors and their pseudonyms
     std::vector<author_pseudonym> authors;
 public:
