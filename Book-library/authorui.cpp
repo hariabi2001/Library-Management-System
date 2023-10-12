@@ -37,11 +37,12 @@ void authorUI::addStringToList(std::string value)
 
 void authorUI::addData()
 {
-    Author *author1 = new Author("Cris Smith", "Classic");
-    Author *author2 = new Author("Albert Tuna", "History");
-    Author *author3 = new Author("Nickolas Tame", "History");
-    Author *author4 = new Author("Khristina Palson", "Thriller");
-    Author *author5 = new Author("John Kenner", "Science Fiction");
+    std::shared_ptr<Author> author1 = std::make_shared<Author>("Cris Smith", "Classic");
+    std::shared_ptr<Author> author2 = std::make_shared<Author>("Albert Tuna", "History");
+    std::shared_ptr<Author> author3 = std::make_shared<Author>("Nickolas Tame", "History");
+    std::shared_ptr<Author> author4 = std::make_shared<Author>("Khristina Palson", "Thriller");
+    std::shared_ptr<Author> author5 = std::make_shared<Author>("John Kenner", "Science Fiction");
+
     authors.push_back(author1);
     authors.push_back(author2);
     authors.push_back(author3);
