@@ -27,5 +27,5 @@ BookInformation::BookInformation(Book* book, QWidget *parent) :
 
 BookInformation::~BookInformation()
 {
-    delete ui;
+    
 }
