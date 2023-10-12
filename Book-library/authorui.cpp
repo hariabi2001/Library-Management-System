@@ -104,23 +104,30 @@ void authorUI::on_bookSort_clicked()
     struct Cmp
     {
         bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
-           {
-               if(a.second == b.second) return a.first < b.first;
-               return a.second < b.second;
-           }
+        {
+            if(a.second == b.second) return a.first < b.first;
+            return a.second < b.second;
+        }
     };
+
     std::map<std::string, int> author_numberOfBooks;
     int num;
-    for (size_t i = 0; i < authors.size(); i++){
+
+    for (size_t i = 0; i < authors.size(); i++) {
         num = algorithm.findBookNumber(books, authors[i], ui->startTime->dateTime().toTime_t(), ui->endTime->dateTime().toTime_t());
-        author_numberOfBooks.insert({ authors[i]->getRealName(), num });
+        author_numberOfBooks.try_emplace(authors[i]->getRealName(), num);
     }
+
     std::set<std::pair<const std::string, int>, Cmp> s;
+
     for (const auto& pair : author_numberOfBooks) {
         s.insert(pair);
     }
+
     ui->authorsTable->clear();
-    for (std::pair<std::string, int> element : s){
+
+    for (const std::pair<std::string, int>& element : s) {
         addStringToList(element.first);
     }
 }
+
