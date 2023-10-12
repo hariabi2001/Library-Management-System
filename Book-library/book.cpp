@@ -9,8 +9,8 @@ Book::Book(const std::string& name, time_t publicationDate, const std::string& g
 
 std::unordered_map<std::string, double, CustomHash, CustomEqual> Book::getPagesByAuthor() 
 {
-    std::unordered_map<std::string, double> authorParts = authors->getPartByAuthor();
-    std::unordered_map<std::string, double> pagesByAuthor;
+    std::unordered_map<std::string, double, CustomHash, CustomEqual> authorParts = authors->getPartByAuthor();
+    std::unordered_map<std::string, double, CustomHash, CustomEqual> pagesByAuthor;
     double pagesAuthor;
     for (auto it = authorParts.begin(); it != authorParts.end(); it++){
         pagesAuthor = it->second * pageNumber;
