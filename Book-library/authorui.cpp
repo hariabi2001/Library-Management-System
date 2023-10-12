@@ -80,24 +80,21 @@ void authorUI::on_pageSort_clicked()
     
     std::map<std::string, int, std::less<>> author_numberOfBooks; // Use std::less<> for transparent comparator
     int num;
-
+    
     for (int i = 0; i < authors.size(); i++) {
         num = algorithm.findPageNumber(books, authors[i], ui->startTime->dateTime().toTime_t(), ui->endTime->dateTime().toTime_t());
         author_numberOfBooks.try_emplace(authors[i]->getRealName(), num);
     }
-
+    
     std::set<std::pair<const std::string, int>, Cmp> s;
-
-    for (const auto& pair : author_numberOfBooks) {
-        s.insert(pair);
+    
+    for (const auto& [authorName, pageCount] : author_numberOfBooks) {
+        addStringToList(authorName);
     }
-
+    
     ui->authorsTable->clear();
-
-    for (const std::pair<std::string, int>& element : s) {
-        addStringToList(element.first);
-    }
 }
+
 
 void authorUI::on_bookSort_clicked()
 {
