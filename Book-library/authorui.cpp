@@ -78,7 +78,7 @@ void authorUI::on_pageSort_clicked()
         }
     };
     
-    std::map<std::string, int> author_numberOfBooks;
+    std::map<std::string, int, std::less<>> author_numberOfBooks; // Use std::less<> for transparent comparator
     int num;
 
     for (int i = 0; i < authors.size(); i++) {
@@ -98,7 +98,6 @@ void authorUI::on_pageSort_clicked()
         addStringToList(element.first);
     }
 }
-
 
 void authorUI::on_bookSort_clicked()
 {
