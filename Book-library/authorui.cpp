@@ -18,7 +18,7 @@ authorUI::authorUI(QWidget *parent) :
 
 authorUI::~authorUI()
 {
-    delete ui;
+    
 }
 
 void authorUI::addToList(Author *author)
