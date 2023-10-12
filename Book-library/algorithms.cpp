@@ -6,17 +6,16 @@
 
 algorithms::algorithms() = default;
 
-int algorithms::findBookNumber(std::vector<Book *> books, Author* author, time_t startDate, time_t endDate)
+int algorithms::findBookNumber(const std::vector<Book*>& books, Author* author, time_t startDate, time_t endDate)
 {
     int bookNumber = 0;
     double secondsBetween1, secondsBetween2;
-
-    for (Book* book : books){
+    for (Book* book : books) {
         secondsBetween1 = difftime(endDate, book->getPublicationDate());
         secondsBetween2 = difftime(book->getPublicationDate(), startDate);
         if (book->isAuthor(author)) bookNumber++;
-        //qt dates don't work :(
-        //(secondsBetween1>=0) && (secondsBetween2>=0)) bookNumber++;
+        // qt dates don't work :(
+        // (secondsBetween1 >= 0) && (secondsBetween2 >= 0)) bookNumber++;
     }
     return bookNumber;
 }
