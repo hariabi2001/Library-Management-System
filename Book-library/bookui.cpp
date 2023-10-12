@@ -89,8 +89,8 @@ void bookUI::on_booksTree_itemClicked(const QTreeWidgetItem* item, [[maybe_unuse
                 break;
             }
         }
-        auto bookinformation = std::make_unique<BookInformation>(searchedBook);
-        bookinformation->show();
+        auto bookInfo = std::make_unique<BookInformation>(searchedBook);
+        bookInfo->show();
     }
 }
 
