@@ -107,7 +107,7 @@ void authorUI::on_bookSort_clicked()
         }
     };
 
-    std::map<std::string, int, std::less<>> author_numberOfBooks; // Use std::less<> for transparent comparator
+    std::map<std::string, int, std::less<>> author_numberOfBooks;
     int num;
 
     for (size_t i = 0; i < authors.size(); i++) {
@@ -117,14 +117,9 @@ void authorUI::on_bookSort_clicked()
 
     std::set<std::pair<const std::string, int>, Cmp> s;
 
-    for (const auto& pair : author_numberOfBooks) {
-        s.insert(pair);
+    for (const auto& [authorName, bookCount] : author_numberOfBooks) {
+        addStringToList(authorName);
     }
 
     ui->authorsTable->clear();
-
-    for (const std::pair<std::string, int>& element : s) {
-        addStringToList(element.first);
-    }
 }
-
