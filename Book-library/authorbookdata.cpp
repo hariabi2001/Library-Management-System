@@ -43,18 +43,22 @@ manyAuthor_firstCoefficient::manyAuthor_firstCoefficient(int coefficient, std::v
 {
 }
 
-std::unordered_map<std::string, double> manyAuthor_firstCoefficient::getPartByAuthor()
+std::unordered_map<std::string, double> manyAuthor_firstCoefficient::getPartByAuthor() 
 {
     std::unordered_map<std::string, double> result;
     int numberOfParts = authors.size() + coefficient - 1;
-    double partMadeByAuthors = 1 / numberOfParts;
+    double partMadeByAuthors = 1.0 / numberOfParts; // Ensure division is done with double
     double partMadeByFirstAuthor = coefficient * partMadeByAuthors;
-    result.insert({ authors[0].author->getRealName(), partMadeByFirstAuthor });
-    for (size_t i = 1; i < authors.size(); i++){
-        result.insert({ authors[i].author->getRealName(), partMadeByAuthors });
+    
+    result.try_emplace(authors[0].author->getRealName(), partMadeByFirstAuthor);
+
+    for (size_t i = 1; i < authors.size(); i++) {
+        result.try_emplace(authors[i].author->getRealName(), partMadeByAuthors);
     }
+
     return result;
 }
+
 
 std::vector<std::string> manyAuthor_firstCoefficient::getAuthors()
 {
