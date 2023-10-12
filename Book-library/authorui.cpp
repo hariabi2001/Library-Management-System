@@ -5,8 +5,8 @@
 #include "authorbookdata.h"
 #include "author.h"
 #include "algorithms.h"
-#include "map"
-#include "set"
+#include <map>
+#include <set>
 
 authorUI::authorUI(QWidget *parent) :
     QMainWindow(parent),
@@ -18,7 +18,7 @@ authorUI::authorUI(QWidget *parent) :
 
 authorUI::~authorUI()
 {
-    
+    // Destructor implementation (if needed).
 }
 
 void authorUI::addToList(Author *author)
@@ -42,12 +42,13 @@ void authorUI::addData()
     auto author3 = std::make_shared<Author>("Nickolas Tame", "History");
     auto author4 = std::make_shared<Author>("Khristina Palson", "Thriller");
     auto author5 = std::make_shared<Author>("John Kenner", "Science Fiction");
-
+    
     authors.push_back(author1);
     authors.push_back(author2);
     authors.push_back(author3);
     authors.push_back(author4);
     authors.push_back(author5);
+    
     auto data1 = std::make_shared<oneAuthor>(author4, "Kelly");
     std::vector<author_pseudonym> many1;
     many1.push_back(author_pseudonym(author1, "Derek"));
@@ -55,11 +56,15 @@ void authorUI::addData()
     many1.push_back(author_pseudonym(author3, "Dams"));
     many1.push_back(author_pseudonym(author5, "Parkinson"));
     auto data2 = std::make_shared<manyAuthors>(many1);
+    
     algorithms algorithm;
+    
     Book *first = new Book("Garry", algorithm.getTime("Sun Feb 13 00:26:36 2000"), "Classic", 123, data1);
     Book *second = new Book("July moon", algorithm.getTime("Mon Feb 7 00:21:00 2005"), "Classic", 123, data2);
+    
     books.push_back(first);
     books.push_back(second);
+    
     addToList(author1);
     addToList(author2);
     addToList(author3);
@@ -69,24 +74,13 @@ void authorUI::addData()
 
 void authorUI::on_pageSort_clicked()
 {
-    struct Cmp
-    {
-        bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b) const
-        {
-            if(a.second == b.second) return a.first < b.first;
-            return a.second < b.second;
-        }
-    };
-    
-    std::map<std::string, int, std::less<>> author_numberOfBooks; // Use std::less<> for transparent comparator
+    std::map<std::string, int, std::less<>> author_numberOfBooks; // Use std::less<> for a transparent comparator
     int num;
     
     for (int i = 0; i < authors.size(); i++) {
         num = algorithm.findPageNumber(books, authors[i], ui->startTime->dateTime().toTime_t(), ui->endTime->dateTime().toTime_t());
         author_numberOfBooks.try_emplace(authors[i]->getRealName(), num);
     }
-    
-    std::set<std::pair<const std::string, int>, Cmp> s;
     
     for (const auto& [authorName, pageCount] : author_numberOfBooks) {
         addStringToList(authorName);
@@ -95,31 +89,19 @@ void authorUI::on_pageSort_clicked()
     ui->authorsTable->clear();
 }
 
-
 void authorUI::on_bookSort_clicked()
 {
-    struct Cmp
-    {
-        bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b) const
-        {
-            if (a.second == b.second) return a.first < b.first;
-            return a.second < b.second;
-        }
-    };
-
     std::map<std::string, int, std::less<>> author_numberOfBooks;
     int num;
-
+    
     for (size_t i = 0; i < authors.size(); i++) {
         num = algorithm.findBookNumber(books, authors[i], ui->startTime->dateTime().toTime_t(), ui->endTime->dateTime().toTime_t());
         author_numberOfBooks.try_emplace(authors[i]->getRealName(), num);
     }
-
-    std::set<std::pair<const std::string, int>, Cmp> s;
-
+    
     for (const auto& [authorName, bookCount] : author_numberOfBooks) {
         addStringToList(authorName);
     }
-
+    
     ui->authorsTable->clear();
 }
