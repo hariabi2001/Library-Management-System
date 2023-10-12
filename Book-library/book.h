@@ -10,7 +10,6 @@
 #include <section.h>
 #include <memory>
 #include <functional> // For custom hash function
-using namespace std;
 // Define custom hash function for Author class
 namespace std {
     template <>
@@ -31,7 +30,7 @@ private:
 
 public:
     Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors);
-    std::unordered_map<string, double, hash<string>> getPagesByAuthor();
+    // std::unordered_map<string, double, hash<string>> getPagesByAuthor();
     bool isAuthor(Author* author);
     std::vector<std::string> getAuthors();
 
