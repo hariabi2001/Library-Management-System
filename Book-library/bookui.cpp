@@ -27,18 +27,20 @@ void bookUI::addRootGenre(QString name)
 
 void bookUI::addChildBook(Book* book)
 {
-    //trying to find the genre of the book from the list
-    for( int i = 0; i < ui->booksTree->topLevelItemCount(); ++i )
+    // Trying to find the genre of the book from the list
+    for (int i = 0; i < ui->booksTree->topLevelItemCount(); ++i)
     {
-       QTreeWidgetItem *item = ui->booksTree->topLevelItem(i);
-       if (item->text(0) == QString::fromStdString(book->getGenre())){
-           QTreeWidgetItem *newBook = new QTreeWidgetItem();
-           newBook->setText(0, QString::fromStdString(book->getName()));
-           item->addChild(newBook);
-           break;
-       }
+        QTreeWidgetItem* item = ui->booksTree->topLevelItem(i);
+        if (item->text(0) == QString::fromStdString(book->getGenre()))
+        {
+            auto newBook = std::make_unique<QTreeWidgetItem>();
+            newBook->setText(0, QString::fromStdString(book->getName()));
+            item->addChild(newBook.release());
+            break;
+        }
     }
 }
+
 
 void bookUI::addData()
 {
