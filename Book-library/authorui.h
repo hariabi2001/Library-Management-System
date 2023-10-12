@@ -24,7 +24,7 @@ private slots:
 
 private:
     algorithms algorithm;
-    Ui::authorUI *ui;
+    [[no_unique_address]] Ui::authorUI *ui;
     std::vector<Book*> books;
     std::vector<Author*> authors;
 
