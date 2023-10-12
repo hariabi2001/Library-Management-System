@@ -100,7 +100,7 @@ void authorUI::on_bookSort_clicked()
 {
     struct Cmp
     {
-        bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
+        bool operator ()(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b) const
         {
             if(a.second == b.second) return a.first < b.first;
             return a.second < b.second;
