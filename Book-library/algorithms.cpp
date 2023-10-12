@@ -38,7 +38,7 @@ double algorithms::findPageNumber(std::vector<Book*> books, Author* author, time
         if (authorPageCount != result.end()) {
             pageNumber += authorPageCount->second;
         }
-        // }
+        
     }
 
     return pageNumber;
