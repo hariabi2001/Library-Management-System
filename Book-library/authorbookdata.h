@@ -28,7 +28,7 @@ private:
     std::string pseudonym;
 public:
     oneAuthor(Author *author, std::string pseudonym);
-    std::unordered_map<std::string, double> getPartByAuthor() override;
+    std::unordered_map<std::string, double, CustomHash, CustomEqual> getPartByAuthor() override;
     std::vector<std::string> getAuthors() override;
     bool isAuthor(Author* author) override;
     Author getAuthor() const;
