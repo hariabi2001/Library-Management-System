@@ -11,7 +11,7 @@ BookInformation::BookInformation(Book* book, QWidget *parent) :
     text.append(book->getName());
     text.append("\n Publication date:\n");
     time_t time = book->getPublicationDate();
-    struct tm *tmp = gmtime(&time);
+    struct tm *tmp = gmtime_r(&time);
     text.append(std::to_string(tmp->tm_year));
     text.append("\nPage number:\n");
     text.append(std::to_string(book->getPageNumber()));
