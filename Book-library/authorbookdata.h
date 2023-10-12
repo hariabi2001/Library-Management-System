@@ -17,7 +17,7 @@ public:
     virtual std::unordered_map<std::string, double, CustomHash, CustomEqual> getPartByAuthor() = 0;
     virtual bool isAuthor(Author* author) = 0;
     virtual std::vector<std::string> getAuthors() = 0;
-    virtual ~authorBookData(){}
+    virtual ~authorBookData() = default;
 };
 
 class oneAuthor : public authorBookData
