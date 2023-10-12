@@ -11,7 +11,7 @@ int algorithms::findBookNumber(const std::vector<Book*>& books, Author* author, 
     int bookNumber = 0;
     double secondsBetween1;
     double secondsBetween2;
-
+    
     for (Book* book : books) {
         secondsBetween1 = difftime(endDate, book->getPublicationDate());
         secondsBetween2 = difftime(book->getPublicationDate(), startDate);
