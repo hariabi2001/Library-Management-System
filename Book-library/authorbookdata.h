@@ -7,8 +7,8 @@
 struct author_pseudonym{
     Author *author;
     const std::string& pseudonym;
-    author_pseudonym(Author *author, std::string pseudonym)
-        :author(author), pseudonym(pseudonym){}
+    author_pseudonym(Author* author, const std::string& pseudonym)
+        : author(author), pseudonym(pseudonym) {}
 };
 
 class authorBookData
