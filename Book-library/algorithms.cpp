@@ -4,9 +4,7 @@
 #include <ctime>
 #include <sstream>
 
-algorithms::algorithms()
-{  
-}
+algorithms::algorithms() = default;
 
 int algorithms::findBookNumber(std::vector<Book *> books, Author* author, time_t startDate, time_t endDate)
 {
