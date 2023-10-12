@@ -16,7 +16,6 @@ class authorUI : public QMainWindow
 
 public:
     explicit authorUI(QWidget *parent = nullptr);
-    ~authorUI();
 
 private slots:
     void on_pageSort_clicked();
