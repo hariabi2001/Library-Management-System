@@ -35,9 +35,9 @@ std::string Book::getName() const
     return name;
 }
 
-void Book::setName(const std::string &value)
+void Book::setName(std::string_view value) 
 {
-    name = value;
+    name = std::string(value);
 }
 
 time_t Book::getPublicationDate() const
