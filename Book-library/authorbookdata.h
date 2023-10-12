@@ -55,7 +55,7 @@ private:
     int coefficient;
 public:
     manyAuthor_firstCoefficient(int coefficient, std::vector<author_pseudonym> authors);
-    std::unordered_map<std::string, double> getPartByAuthor() override;
+    std::unordered_map<std::string, double, CustomHash, CustomEqual> getPartByAuthor() override;
     std::vector<std::string> getAuthors() override;
     //isAuthor, getAuthors from manyAuthors class should be used
     int getCoefficient() const;
