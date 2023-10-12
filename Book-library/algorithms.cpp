@@ -37,23 +37,17 @@ double algorithms::findPageNumber(std::vector<Book *> books, Author *author, tim
     return pageNumber;
 }
 
-time_t algorithms::getTime(std::string time)
-{
-    time_t tStart;
-    int yy, month, dd, hh, mm, ss;
-    struct tm whenStart;
-    const char *zStart = time.c_str();
+time_t algorithms::getTime(const std::string& timeString) {
+    std::tm whenStart = {};
+    std::istringstream timeStream(timeString);
+    timeStream >> std::get_time(&whenStart, "%Y/%m/%d %H:%M:%S");
 
-    sscanf(zStart, "%d/%d/%d %d:%d:%d", &yy, &month, &dd, &hh, &mm, &ss);
-    whenStart.tm_year = yy;
-    whenStart.tm_mon = month - 1;
-    whenStart.tm_mday = dd;
-    whenStart.tm_hour = hh;
-    whenStart.tm_min = mm;
-    whenStart.tm_sec = ss;
-    whenStart.tm_isdst = -1;
+    if (timeStream.fail()) {
+        // Handle invalid input
+        return -1; // Or any other appropriate error handling
+    }
 
-    tStart = mktime(&whenStart);
-    return tStart;
+    std::chrono::system_clock::time_point tp = std::chrono::system_clock::from_time_t(std::mktime(&whenStart));
+    return std::chrono::system_clock::to_time_t(tp);
 }
 
