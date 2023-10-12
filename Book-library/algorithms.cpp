@@ -10,12 +10,12 @@ int algorithms::findBookNumber(const std::vector<Book*>& books, Author* author, 
 {
     int bookNumber = 0;
     double secondsBetween1, secondsBetween2;
+
     for (Book* book : books) {
         secondsBetween1 = difftime(endDate, book->getPublicationDate());
         secondsBetween2 = difftime(book->getPublicationDate(), startDate);
-        if (book->isAuthor(author)) bookNumber++;
-        // qt dates don't work :(
-        // (secondsBetween1 >= 0) && (secondsBetween2 >= 0)) bookNumber++;
+        if (book->isAuthor(author))
+            bookNumber++;
     }
     return bookNumber;
 }
