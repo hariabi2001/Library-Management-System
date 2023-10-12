@@ -14,7 +14,6 @@ class BookInformation : public QDialog
 
 public:
     explicit BookInformation(Book* book, QWidget *parent = nullptr);
-    ~BookInformation();
 
 private:
     Ui::BookInformation *ui;
