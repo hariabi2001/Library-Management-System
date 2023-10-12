@@ -19,10 +19,11 @@ bookUI::~bookUI()
 
 void bookUI::addRootGenre(QString name)
 {
-    QTreeWidgetItem *item = new QTreeWidgetItem(ui->booksTree);
+    std::unique_ptr<QTreeWidgetItem> item = std::make_unique<QTreeWidgetItem>(ui->booksTree);
     item->setText(0, name);
-    ui->booksTree->addTopLevelItem(item);
+    ui->booksTree->addTopLevelItem(item.release());
 }
+
 
 void bookUI::addChildBook(Book* book)
 {
