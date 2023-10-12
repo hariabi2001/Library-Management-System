@@ -30,7 +30,6 @@ private:
 
 public:
     Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors);
-    // std::unordered_map<string, double, hash<string>> getPagesByAuthor();
     bool isAuthor(Author* author);
     std::vector<std::string> getAuthors();
 
