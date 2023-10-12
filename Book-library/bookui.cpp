@@ -79,8 +79,7 @@ void bookUI::addData()
         addChildBook(book);
 }
 
-
-void bookUI::on_booksTree_itemClicked(QTreeWidgetItem *item, [[maybe_unused]] int column)
+void bookUI::on_booksTree_itemClicked(const QTreeWidgetItem* item, [[maybe_unused]] int column)
 {
     if (item->parent()){
         Book* searchedBook = books[0];
@@ -94,3 +93,4 @@ void bookUI::on_booksTree_itemClicked(QTreeWidgetItem *item, [[maybe_unused]] in
         bookinformation->show();
     }
 }
+
