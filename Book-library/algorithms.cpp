@@ -32,7 +32,7 @@ double algorithms::findPageNumber(std::vector<Book*> books, Author* author, time
 
         // Check if the book falls within the specified date range
         // if (secondsBetween1 > 0 && secondsBetween2 > 0) {
-        std::unordered_map<std::string, double, std::hash<std::string>, std::equal_to<>> result = book->getPagesByAuthor();
+        std::unordered_map<std::string, double, CustomHash, CustomEqual> result = book->getPagesByAuthor();
 
         // Check if the author's name exists in the book's author list
         auto authorPageCount = result.find(author->getRealName());
