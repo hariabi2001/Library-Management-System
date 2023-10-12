@@ -33,9 +33,9 @@ std::string oneAuthor::getPseudonym() const
     return pseudonym;
 }
 
-void oneAuthor::setPseudonym(const std::string &value)
+void oneAuthor::setPseudonym(std::string_view value) 
 {
-    pseudonym = value;
+    pseudonym = std::string(value);
 }
 
 manyAuthor_firstCoefficient::manyAuthor_firstCoefficient(int coefficient, std::vector<author_pseudonym> authors)
