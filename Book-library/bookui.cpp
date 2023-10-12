@@ -51,7 +51,7 @@ void bookUI::addData()
     authors.push_back(author2);
     authors.push_back(author3);
     authors.push_back(author4);
-    authors push_back(author5);
+    authors.push_back(author5);
     
     auto data1 = std::make_shared<oneAuthor>(author4, "Kelly");
     std::vector<author_pseudonym> many1;
