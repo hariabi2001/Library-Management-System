@@ -6,7 +6,7 @@ std::string Author::getFavouriteGenre() const
     return favouriteGenre;
 }
 
-void Author::setFavouriteGenre(const std::string &value)
+void Author::setFavouriteGenre(std::string_view value)
 {
     favouriteGenre = value;
 }
