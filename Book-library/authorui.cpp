@@ -48,13 +48,13 @@ void authorUI::addData()
     authors.push_back(author3);
     authors.push_back(author4);
     authors.push_back(author5);
-    authorBookData *data1 = new oneAuthor(author4, "Kelly");
+    auto data1 = std::make_shared<oneAuthor>(author4, "Kelly");
     std::vector<author_pseudonym> many1;
     many1.push_back(author_pseudonym(author1, "Derek"));
     many1.push_back(author_pseudonym(author2, "Felly"));
     many1.push_back(author_pseudonym(author3, "Dams"));
     many1.push_back(author_pseudonym(author5, "Parkinson"));
-    authorBookData *data2 = new manyAuthors(many1);
+    auto data2 = std::make_shared<manyAuthors>(many1);
     algorithms algorithm;
     Book *first = new Book("Garry", algorithm.getTime("Sun Feb 13 00:26:36 2000"), "Classic", 123, data1);
     Book *second = new Book("July moon", algorithm.getTime("Mon Feb 7 00:21:00 2005"), "Classic", 123, data2);
