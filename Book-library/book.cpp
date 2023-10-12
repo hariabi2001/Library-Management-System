@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <authorbookdata.h>
 
-Book::Book(std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors)
+Book::Book(const std::string& name, time_t publicationDate, const std::string& genre, int pageNumber, authorBookData* authors)
     : name(name), publicationDate(publicationDate), genre(genre), pageNumber(pageNumber), authors(authors)
 {
 }
