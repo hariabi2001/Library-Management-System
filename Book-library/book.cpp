@@ -70,7 +70,7 @@ void Book::setPageNumber(int value)
 {
     pageNumber = value;
 }
-manyAuthorBook_withSections::manyAuthorBook_withSections(std::vector<Section> sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors)
+manyAuthorBook_withSections::manyAuthorBook_withSections(const std::vector<Section>& sections, std::string name, time_t publicationDate, std::string genre, int pageNumber, authorBookData* authors)
     : Book(name, publicationDate, genre, pageNumber, authors), sections(sections)
 {
 }
