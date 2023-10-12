@@ -6,10 +6,10 @@ oneAuthor::oneAuthor(Author *author, std::string pseudonym)
 {
 }
 
-std::unordered_map<std::string, double> oneAuthor::getPartByAuthor()
+std::unordered_map<std::string, double, CustomHash, std::equal_to<>> oneAuthor::getPartByAuthor() 
 {
-    std::unordered_map<std::string, double> result;
-    result.insert({ author->getRealName(), 1 });
+    std::unordered_map<std::string, double, CustomHash, std::equal_to<>> result;
+    result.insert({ author->getRealName(), 1.0 }); // Use 1.0 to ensure a double value
     return result;
 }
 
